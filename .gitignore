@@ -1,0 +1,38 @@
+# Build outputs
+dist/
+build/
+target/
+*.jar
+*.war
+*.ear
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# Dependencies
+node_modules/
+.gradle/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment
+.env
+.env.local
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

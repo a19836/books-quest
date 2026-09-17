@@ -1,0 +1,7 @@
+.adventure-navbar {
+  background: linear-gradient(135deg, #cc923a 0%, #d6a22f 100%);
+}
+
+.navbar-brand {
+  cursor: pointer;
+}

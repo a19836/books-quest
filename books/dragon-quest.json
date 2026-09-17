@@ -1,0 +1,232 @@
+{
+  "title": "The Dragon's Quest",
+  "author": "Tobias Silvermane",
+  "difficulty": "HARD",
+  "category": "High Fantasy",
+  "tags": ["dragon", "wizard", "magic", "tower", "quest"],
+  "fastReadingMinutes": 45,
+  "slowReadingMinutes": 60,
+  "description": "Journey to the ancient tower to face the legendary dragon. Armed with magic and wit, navigate treacherous paths, uncover ancient secrets, and decide the fate of an entire realm.",
+  "sections": [
+    {
+      "id": 1,
+      "text": "You stand before the ancient tower where the dragon is said to guard an ancient magic. The tower looms above the clouds, its stone walls weathered by centuries. You must decide how to approach this dangerous quest.",
+      "type": "BEGIN",
+      "options": [
+        {
+          "description": "Climb the tower using the rope you brought",
+          "gotoId": 10
+        },
+        {
+          "description": "Cast a spell to create a portal at the tower's base",
+          "gotoId": 20,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "2",
+            "text": "The spell drains your magical reserves, leaving you weakened."
+          }
+        },
+        {
+          "description": "Walk around to find another entrance",
+          "gotoId": 30
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "text": "You climb the tower. Halfway up, you face a stone golem guarding the stairs.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Attempt to fight the golem",
+          "gotoId": 100,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "4",
+            "text": "The battle is fierce and you are wounded."
+          }
+        },
+        {
+          "description": "Try to negotiate with it",
+          "gotoId": 101
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "text": "The portal opens. You step through into the tower's interior. The air crackles with ancient magic.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Proceed up the spiral stairs",
+          "gotoId": 102
+        },
+        {
+          "description": "Examine the magical runes on the walls",
+          "gotoId": 103,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "1",
+            "text": "A stray magical bolt strikes you slightly."
+          }
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "text": "You find a hidden entrance at the tower's rear. An old wooden door beckons you.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Force open the door",
+          "gotoId": 104
+        },
+        {
+          "description": "Pick the ancient lock",
+          "gotoId": 105
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "text": "After a grueling battle, you defeat the golem. Its stone crumbles to dust as you press onward.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Ascend to the tower's peak",
+          "gotoId": 200
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "text": "The golem lowers its guard. It was once a wizard too, cursed to guard the tower. You share knowledge and the golem lets you pass.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Ascend to the tower's peak",
+          "gotoId": 200
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "text": "The stairs lead to a vast chamber. There, coiled around glowing crystals, sleeps the dragon.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Approach the dragon cautiously",
+          "gotoId": 300
+        },
+        {
+          "description": "Try to steal the crystals while the dragon sleeps",
+          "gotoId": 301,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "5",
+            "text": "The dragon wakes and strikes at you!"
+          }
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "text": "The runes reveal the tower's history. You gain forbidden knowledge that strengthens your spirit.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Proceed up the spiral stairs with newfound power",
+          "gotoId": 102
+        }
+      ]
+    },
+    {
+      "id": 104,
+      "text": "The door splinters open. You enter a chamber filled with treasures and the dragon's hoard.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Follow the sound of breathing toward the dragon",
+          "gotoId": 300
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "text": "You skillfully pick the lock. The door swings open silently.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Enter stealthily",
+          "gotoId": 300
+        }
+      ]
+    },
+    {
+      "id": 200,
+      "text": "You reach the tower's summit. There before you lies the ancient dragon, guardian of secrets.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Face the dragon in combat",
+          "gotoId": 1000,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "7",
+            "text": "The dragon's flames scorch you in a deadly battle!"
+          }
+        },
+        {
+          "description": "Speak with the dragon about ancient magic",
+          "gotoId": 1001
+        }
+      ]
+    },
+    {
+      "id": 300,
+      "text": "The dragon's eyes snap open. It regards you with ancient wisdom and terrible power.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Bow in respect",
+          "gotoId": 1001
+        },
+        {
+          "description": "Draw your weapon",
+          "gotoId": 1000,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "6",
+            "text": "The dragon unleashes a torrent of flame!"
+          }
+        }
+      ]
+    },
+    {
+      "id": 301,
+      "text": "You steal several glowing crystals as the dragon writhes in pain. The crystals are yours.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Flee the tower",
+          "gotoId": 1002
+        }
+      ]
+    },
+    {
+      "id": 1000,
+      "text": "The battle is fierce. You and the dragon clash with magical and physical force. One of you must fall. Destiny chooses... and you are victorious, though barely alive.",
+      "type": "END"
+    },
+    {
+      "id": 1001,
+      "text": "The dragon teaches you the secrets of the ancient tower. You become one of the greatest wizards in the realm.",
+      "type": "END"
+    },
+    {
+      "id": 1002,
+      "text": "You escape with the crystals. A fortune awaits you in the kingdoms below. You are rich and alive.",
+      "type": "END"
+    }
+  ]
+}

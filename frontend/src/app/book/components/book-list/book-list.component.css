@@ -1,0 +1,98 @@
+.book-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #cc923a 0%, #d6a22f 100%);
+}
+
+.filter-badge {
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  min-height:2rem;
+}
+
+.filter-badge:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.difficulty-pill {
+  color: #fff;
+}
+
+.difficulty-easy,
+.difficulty-easy:hover {
+  background-color: #198754;
+}
+
+.difficulty-medium,
+.difficulty-medium:hover {
+  background-color: #fd7e14;
+}
+
+.difficulty-hard,
+.difficulty-hard:hover {
+  background-color: #dc3545;
+}
+
+.category-badge,
+.category-badge:hover {
+  background-color: #0d6efd;
+}
+
+.tag-badge,
+.tag-badge:hover {
+  background-color: #6c757d;
+}
+
+.filter-badge.selected {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+}
+
+.filter-remove-btn {
+  appearance: none;
+  border: 0;
+  background: rgba(255, 255, 255, 0.2);
+  color: inherit;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.filter-remove-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.book-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-color:#d6a22f;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.12) !important;
+}
+
+.book-description {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  min-height: 4.8rem;
+  background-color: #f9f7f4;
+  padding: 0.75rem;
+  border-left: 3px solid #d4a574;
+  border-radius: 4px;
+}

@@ -1,0 +1,130 @@
+<div class="book-list-container">
+  <section class="hero-section text-center text-white p-4 p-md-5 rounded-4 shadow-sm mb-4">
+    <h1 class="display-5 fw-bold mb-2">⭐ Adventure Waits ⭐</h1>
+    <p class="lead mb-2">Embark on epic quests where every choice shapes your destiny.</p>
+    <p class="text-white-50 mb-0">📖 {{ books.length }} Epic Adventures Available ⭐</p>
+  </section>
+
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body p-4">
+      <div class="row g-3 align-items-center">
+        <div class="col-12">
+          <div class="input-group">
+            <span class="input-group-text">🔍</span>
+            <input
+              type="text"
+              [(ngModel)]="searchQuery"
+              (input)="onSearchChange($event)"
+              class="form-control"
+              placeholder="Search by title, author, description..."
+            />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="d-flex flex-wrap gap-2 justify-content-lg-end">
+            <span class="">⏳ Filters: </span>
+            <span
+              *ngFor="let difficulty of availableDifficulties"
+              class="badge filter-badge difficulty-badge d-inline-flex align-items-center gap-2"
+              [ngClass]="'difficulty-' + (difficulty | lowercase)"
+              [class.selected]="selectedDifficulty === difficulty"
+              (click)="toggleDifficulty(difficulty)">
+              <span>{{ difficulty | titlecase }}</span>
+              <button
+                *ngIf="selectedDifficulty === difficulty"
+                type="button"
+                class="filter-remove-btn"
+                aria-label="Remove difficulty filter"
+                (click)="removeDifficulty(difficulty); $event.stopPropagation()">
+                ×
+              </button>
+            </span>
+            <span
+              *ngFor="let category of availableCategories"
+              class="badge filter-badge category-badge d-inline-flex align-items-center gap-2"
+              [class.selected]="selectedCategories.has(category)"
+              (click)="toggleCategory(category)">
+              <span>{{ category }}</span>
+              <button
+                *ngIf="selectedCategories.has(category)"
+                type="button"
+                class="filter-remove-btn"
+                aria-label="Remove category filter"
+                (click)="removeCategory(category); $event.stopPropagation()">
+                ×
+              </button>
+            </span>
+            <span
+              *ngFor="let tag of availableTags"
+              class="badge filter-badge tag-badge d-inline-flex align-items-center gap-2"
+              [class.selected]="selectedTags.has(tag)"
+              (click)="toggleTag(tag)">
+              <span>{{ tag }}</span>
+              <button
+                *ngIf="selectedTags.has(tag)"
+                type="button"
+                class="filter-remove-btn"
+                aria-label="Remove tag filter"
+                (click)="removeTag(tag); $event.stopPropagation()">
+                ×
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="text-center py-5">
+    <div class="spinner-border text-warning" role="status"></div>
+    <p class="mt-3 mb-0 text-secondary">Loading books...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger d-flex justify-content-between align-items-center">
+    <span>{{ errorMessage }}</span>
+    <button (click)="loadBooks()" class="btn btn-sm btn-outline-light">Retry</button>
+  </div>
+
+  <div *ngIf="!isLoading && filteredBooks.length === 0 && !errorMessage" class="text-center py-5 text-secondary">
+    <p class="mb-0">No books found</p>
+  </div>
+
+  <div class="row g-4">
+    <div *ngFor="let book of filteredBooks" class="col-12 col-sm-6 col-md-4 col-xl-4">
+      <div class="card h-100 shadow-sm book-card">
+        <div class="card-body d-flex flex-column">
+          <h3 class="h5 fw-bold mb-1">{{ book.title }}</h3>
+          <p class="text-secondary mb-3">by {{ book.author }}</p>
+
+          <p class="book-description flex-grow-1" *ngIf="book.description">
+            {{ book.description }}
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center gap-2 mb-2" *ngIf="book.category">
+            <span class="badge difficulty-pill" [ngClass]="'difficulty-' + (book.difficulty || 'MEDIUM').toLowerCase()">
+              {{ book.difficulty }}
+            </span>
+            <span class="badge rounded-pill bg-success-subtle text-success-emphasis">{{ book.category }}</span>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
+            <small class="text-secondary" *ngIf="book.fastReadingMinutes && book.slowReadingMinutes">
+              🕐 {{ book.fastReadingMinutes }}-{{ book.slowReadingMinutes }} min
+            </small>
+            <small class="text-secondary ms-auto" *ngIf="book.chapters">📖 {{ book.chapters }} Chapters</small>
+          </div>
+
+          <div class="d-flex flex-wrap gap-2 mb-3" *ngIf="book.tags && book.tags.length > 0">
+            <span class="badge rounded-pill bg-secondary-subtle text-secondary-emphasis" *ngFor="let tag of book.tags">
+              {{ tag }}
+            </span>
+          </div>
+
+          <button (click)="selectBook(book)" class="btn btn-warning fw-semibold w-100 mt-auto">
+            ⭐ Begin Quest
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

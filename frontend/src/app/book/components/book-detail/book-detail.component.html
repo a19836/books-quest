@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-9 col-xl-8">
+    <button (click)="goBack()" class="btn btn-outline-secondary mb-3">← Back to Books</button>
+
+    <div *ngIf="isLoading" class="text-center py-5">
+      <div class="spinner-border text-warning" role="status"></div>
+      <p class="mt-3 mb-0 text-secondary">Loading book details...</p>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
+
+    <div *ngIf="!isLoading && book" class="card shadow-sm border-0">
+      <div class="card-body p-4 p-md-5">
+        <div class="d-flex flex-column flex-md-row gap-4 align-items-start mb-4">
+          <div class="display-1 flex-shrink-0">📖</div>
+          <div class="flex-grow-1">
+            <h1 class="display-6 fw-bold mb-3">{{ book.title }}</h1>
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+              <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis">✍️ {{ book.author }}</span>
+              <span class="badge rounded-pill difficulty-pill" [ngClass]="'difficulty-' + (book.difficulty | lowercase)">
+                📊 {{ book.difficulty }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-top pt-4 mb-4">
+          <h2 class="h4 mb-3">About this Adventure</h2>
+          <p class="mb-0 text-secondary" *ngIf="book.description">{{ book.description }}</p>
+          <p *ngIf="!book.description" class="text-muted fst-italic mb-0">No description available for this adventure.</p>
+        </div>
+
+        <button
+          (click)="startGame()"
+          class="btn btn-warning btn-lg fw-semibold px-4"
+          [disabled]="isStartingGame">
+          {{ isStartingGame ? 'Starting...' : 'Start Adventure' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

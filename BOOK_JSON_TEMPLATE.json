@@ -1,0 +1,67 @@
+{
+  "title": "Your Book Title",
+  "author": "Author Name",
+  "difficulty": "EASY",
+  "category": "Fantasy",
+  "tags": ["magic", "adventure", "quest"],
+  "fastReadingMinutes": 30,
+  "slowReadingMinutes": 45,
+  "sections": [
+    {
+      "id": 1,
+      "text": "Your story begins here. This is the initial narrative that sets the scene for the adventure.",
+      "type": "BEGIN",
+      "options": [
+        {
+          "description": "First choice description",
+          "gotoId": 2
+        },
+        {
+          "description": "Second choice description",
+          "gotoId": 3,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "2",
+            "text": "Description of what happens when this choice is made"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "text": "If the player chose the first option, they arrive here.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Continue the adventure",
+          "gotoId": 100
+        },
+        {
+          "description": "Try a different approach",
+          "gotoId": 1,
+          "consequence": {
+            "type": "GAIN_HEALTH",
+            "value": "1",
+            "text": "You gain a boost of energy"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "text": "If the player chose the second option, they arrive here.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Move forward",
+          "gotoId": 100
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "text": "The adventure concludes successfully! You have achieved your goal.",
+      "type": "END"
+    }
+  ]
+}

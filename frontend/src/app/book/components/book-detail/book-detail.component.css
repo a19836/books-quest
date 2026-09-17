@@ -1,0 +1,18 @@
+.difficulty-pill {
+  color: #fff;
+}
+
+.difficulty-easy,
+.difficulty-easy:hover {
+  background-color: #198754;
+}
+
+.difficulty-medium,
+.difficulty-medium:hover {
+  background-color: #fd7e14;
+}
+
+.difficulty-hard,
+.difficulty-hard:hover {
+  background-color: #dc3545;
+}

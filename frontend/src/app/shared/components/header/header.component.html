@@ -1,0 +1,22 @@
+<nav class="navbar navbar-dark navbar-expand adventure-navbar shadow-sm">
+  <div class="container-fluid px-4">
+    <button type="button" class="navbar-brand btn btn-link p-0 text-white text-decoration-none fw-bold" (click)="goHome()">
+      Adventure Book
+    </button>
+
+    <div class="ms-auto d-flex align-items-center gap-3">
+      <ng-container *ngIf="currentUser$ | async as user; else loggedOut">
+        <span class="text-white-50 small">Welcome, {{ user.username }}!</span>
+        <button (click)="logout()" class="btn btn-outline-light btn-sm">
+          Logout
+        </button>
+      </ng-container>
+
+      <ng-template #loggedOut>
+        <button *ngIf="!isAuthPage" (click)="goToLogin()" class="btn btn-outline-light btn-sm">
+          Login
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,22 @@
+.form-control:focus {
+  border-color: #d6a22f;
+  box-shadow: 0 0 0 0.2rem rgba(214, 162, 47, 0.15);
+}
+
+.btn-primary {
+  background-color: #d6a22f;
+  border-color: #d6a22f;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #b58a23;
+  border-color: #b58a23;
+}
+
+.btn-link {
+  color: #d6a22f;
+}
+
+.btn-link:hover {
+  color: #cc923a;
+}
