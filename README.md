@@ -2,6 +2,17 @@
 
 Interactive Books Quest app built with Angular (frontend) and Spring Boot microservices (backend).
 
+## Screenshots
+
+Add your product screenshots in a folder like `screenshots/` and reference them here.
+
+![Login](screenshots/login.png)
+![Register](screenshots/register.png)
+![Dashboard](screenshots/dashboard.png)
+![List books](screenshots/books_list.png)
+![Book details](screenshots/book_details.png)
+![Reading a book](screenshots/game.png)
+
 ## Quick Start
 
 ### Prerequisites
