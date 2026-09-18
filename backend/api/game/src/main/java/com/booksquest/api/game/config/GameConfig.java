@@ -28,7 +28,7 @@ public class GameConfig {
     public FilterRegistrationBean<JwtAuthenticationFilter> jwtAuthenticationFilterRegistration() {
         FilterRegistrationBean<JwtAuthenticationFilter> registration = new FilterRegistrationBean<>();
         registration.setFilter(jwtAuthenticationFilter);
-        registration.addUrlPatterns("/api/games/*", "/api/saves/*");
+        registration.addUrlPatterns("/api/games/*");
         registration.setOrder(1);
         return registration;
     }
